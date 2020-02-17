@@ -1,5 +1,5 @@
 /*
-Each function returns the index and success of the target by (int, bool). 
+Each function returns the index of the target and whether it succeeded or not by (int, bool). 
 */
 package search
 
