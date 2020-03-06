@@ -1,4 +1,4 @@
-package math
+package josephus
 
 /*
 T(n) = O(mn)

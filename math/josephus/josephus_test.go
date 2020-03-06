@@ -1,7 +1,6 @@
-package test
+package josephus
 
 import (
-	"algorithm/math"
 	"testing"
 )
 
@@ -12,18 +11,18 @@ var (
 
 func BenchmarkQueue(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		math.JosephusQueue(N, M)
+		JosephusQueue(N, M)
 	}
 }
 
 func BenchmarkForm1(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		math.JosephusForm1(N, M)
+		JosephusForm1(N, M)
 	}
 }
 
 func BenchmarkForm2(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		math.JosephusForm2(N, M)
+		JosephusForm2(N, M)
 	}
 }

@@ -1,11 +1,7 @@
-/*
-Each function returns the index of the target and whether it succeeded or not by (int, bool). 
-*/
+// Each function returns the index of the target and whether it succeeded or not by (int, bool).
 package search
 
-/**
-find target.
-*/
+// find target.
 func BinarySearch(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)>>1
@@ -20,9 +16,7 @@ func BinarySearch(a []int, left, right, target int) (int, bool) {
 	return -1, false
 }
 
-/**
-find the last element less than or equal to the target.
-*/
+// find the last element less than or equal to the target.
 func FindLastLE(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)>>1
@@ -38,9 +32,7 @@ func FindLastLE(a []int, left, right, target int) (int, bool) {
 	return left - 1, true
 }
 
-/**
-find the first element greater than or equal to the target.
-*/
+// find the first element greater than or equal to the target.
 func FindFirstGE(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)>>1
@@ -56,9 +48,7 @@ func FindFirstGE(a []int, left, right, target int) (int, bool) {
 	return right + 1, true
 }
 
-/**
-find the last element less than the target.
-*/
+// find the last element less than the target.
 func FindLastLT(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)/2
@@ -74,9 +64,7 @@ func FindLastLT(a []int, left, right, target int) (int, bool) {
 	return left - 1, true
 }
 
-/**
-find the first element greater than the target.
-*/
+// find the first element greater than the target.
 func FindFirstGT(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)>>1
