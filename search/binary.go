@@ -2,7 +2,8 @@
 package search
 
 // find target.
-func BinarySearch(a []int, left, right, target int) (int, bool) {
+func BinarySearch(a []int, target int) (int, bool) {
+	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
 		if target > a[mid] {
@@ -17,7 +18,8 @@ func BinarySearch(a []int, left, right, target int) (int, bool) {
 }
 
 // find the last element less than or equal to the target.
-func FindLastLE(a []int, left, right, target int) (int, bool) {
+func FindLastLE(a []int, target int) (int, bool) {
+	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
 		if target >= a[mid] {
@@ -33,7 +35,8 @@ func FindLastLE(a []int, left, right, target int) (int, bool) {
 }
 
 // find the first element greater than or equal to the target.
-func FindFirstGE(a []int, left, right, target int) (int, bool) {
+func FindFirstGE(a []int, target int) (int, bool) {
+	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
 		if target <= a[mid] {
@@ -49,7 +52,8 @@ func FindFirstGE(a []int, left, right, target int) (int, bool) {
 }
 
 // find the last element less than the target.
-func FindLastLT(a []int, left, right, target int) (int, bool) {
+func FindLastLT(a []int, target int) (int, bool) {
+	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)/2
 		if target > a[mid] {
@@ -65,7 +69,8 @@ func FindLastLT(a []int, left, right, target int) (int, bool) {
 }
 
 // find the first element greater than the target.
-func FindFirstGT(a []int, left, right, target int) (int, bool) {
+func FindFirstGT(a []int, target int) (int, bool) {
+	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
 		if target < a[mid] {

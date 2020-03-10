@@ -1,3 +1,3 @@
-module algorithm
+module github.com/cmatrixprobe/algorithm
 
-go 1.13
+go 1.14

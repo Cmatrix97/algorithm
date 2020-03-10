@@ -44,7 +44,7 @@ func TestBinarySearch(t *testing.T) {
 	rng := rand.New(rand.NewSource(seed))
 	for i := 0; i < 10000; i++ {
 		arr, target, wantIdxs, wantSuc := randomArray(rng)
-		idx, suc := BinarySearch(arr, 0, len(arr)-1, target)
+		idx, suc := BinarySearch(arr, target)
 		flag := false
 		for _, v := range wantIdxs {
 			if v == idx {
@@ -75,7 +75,7 @@ func TestFindLastLE(t *testing.T) {
 		{[]int{47, 128, 153, 170, 305, 320, 359, 424, 458, 689, 749, 780, 830, 877, 896, 901, 989}, 458, 8, true},
 	}
 	for _, test := range tests {
-		idx, suc := FindLastLE(test.arr, 0, len(test.arr)-1, test.target)
+		idx, suc := FindLastLE(test.arr, test.target)
 		if idx != test.idx || suc != test.suc {
 			t.Errorf("FindLastLE(%v, %d): got(%d,%t), except(%d,%t)", test.arr, test.target, idx, suc, test.idx, test.suc)
 		}
@@ -96,7 +96,7 @@ func TestFindFirstGE(t *testing.T) {
 		{[]int{47, 128, 153, 170, 305, 320, 359, 424, 458, 689, 749, 780, 830, 877, 896, 901, 989}, 31, 0, true},
 	}
 	for _, test := range tests {
-		idx, suc := FindFirstGE(test.arr, 0, len(test.arr)-1, test.target)
+		idx, suc := FindFirstGE(test.arr, test.target)
 		if idx != test.idx || suc != test.suc {
 			t.Errorf("FindLastLE(%v, %d): got(%d,%t), except(%d,%t)", test.arr, test.target, idx, suc, test.idx, test.suc)
 		}
@@ -117,7 +117,7 @@ func TestFindLastLT(t *testing.T) {
 		{[]int{47, 128, 153, 170, 305, 320, 359, 424, 458, 689, 749, 780, 830, 877, 896, 901, 989}, 31, -1, false},
 	}
 	for _, test := range tests {
-		idx, suc := FindLastLE(test.arr, 0, len(test.arr)-1, test.target)
+		idx, suc := FindLastLE(test.arr, test.target)
 		if idx != test.idx || suc != test.suc {
 			t.Errorf("FindLastLE(%v, %d): got(%d,%t), except(%d,%t)", test.arr, test.target, idx, suc, test.idx, test.suc)
 		}
@@ -138,7 +138,7 @@ func TestFindFirstGT(t *testing.T) {
 		{[]int{47, 128, 153, 170, 305, 320, 359, 424, 458, 689, 749, 780, 830, 877, 896, 901, 989}, 31, 0, true},
 	}
 	for _, test := range tests {
-		idx, suc := FindFirstGT(test.arr, 0, len(test.arr)-1, test.target)
+		idx, suc := FindFirstGT(test.arr, test.target)
 		if idx != test.idx || suc != test.suc {
 			t.Errorf("FindLastLE(%v, %d): got(%d,%t), except(%d,%t)", test.arr, test.target, idx, suc, test.idx, test.suc)
 		}
