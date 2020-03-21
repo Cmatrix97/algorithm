@@ -1,35 +1,21 @@
 package sort
 
-// HeapSort: Modify subscript by copy simply.
+// HeapSort
 func HeapSort(a []int) {
-	aux := make([]int, len(a)+1)
-	copy(aux[1:], a)
-	HeapS(aux)
-	copy(a, aux[1:])
-}
-
-func HeapS(a []int) {
 	N := len(a) - 1
-	for k := N / 2; k >= 1; k-- {
+	for k := (N - 1) / 2; k >= 0; k-- {
 		sink(a, k, N)
 	}
-	for N > 1 {
-		a[1], a[N] = a[N], a[1]
+	for N > 0 {
+		a[0], a[N] = a[N], a[0]
 		N--
-		sink(a, 1, N)
-	}
-}
-
-func swim(pq []int, k int) {
-	for k > 1 && pq[k/2] < pq[k] {
-		pq[k/2], pq[k] = pq[k], pq[k/2]
-		k /= 2
+		sink(a, 0, N)
 	}
 }
 
 func sink(pq []int, k, N int) {
-	for 2*k <= N {
-		j := 2 * k
+	for 2*k+1 <= N {
+		j := 2*k + 1
 		if j < N && pq[j+1] > pq[j] {
 			j++
 		}
