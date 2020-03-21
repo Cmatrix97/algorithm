@@ -1,5 +1,6 @@
 package sort
 
+// SelectSort
 func SelectSort(a []int) {
 	N := len(a)
 	for i := 0; i < N; i++ {

@@ -1,5 +1,6 @@
 package sort
 
+// ShellSort: increment sequence h(1, 4, 13, 40, 121...)
 func ShellSort(a []int) {
 	N := len(a)
 	h := 1

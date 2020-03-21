@@ -1,5 +1,6 @@
 package sort
 
+// HeapSort: Modify subscript by copy simply.
 func HeapSort(a []int) {
 	aux := make([]int, len(a)+1)
 	copy(aux[1:], a)

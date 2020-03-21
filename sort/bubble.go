@@ -1,5 +1,6 @@
 package sort
 
+// BubbleSort
 func BubbleSort(a []int) {
 	N := len(a)
 	for i := N - 1; i >= 1; i-- {

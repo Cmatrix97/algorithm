@@ -1,5 +1,6 @@
 package sort
 
+// InsertSort
 func InsertSort(a []int) {
 	N := len(a)
 	for i := 1; i < N; i++ {

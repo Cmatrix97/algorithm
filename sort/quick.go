@@ -1,8 +1,8 @@
 package sort
 
+// QuickSort (2way)
 func QuickSort(a []int) {
 	QSort(a, 0, len(a)-1)
-	// Quick3way(a, 0, len(a)-1)
 }
 
 func QSort(a []int, low, high int) {
@@ -29,6 +29,11 @@ func partition(a []int, low, high int) int {
 	}
 	a[low] = temp
 	return low
+}
+
+// QuickSort3way
+func QuickSort3way(a []int) {
+	Quick3way(a, 0, len(a)-1)
 }
 
 func Quick3way(a []int, low, high int) {
