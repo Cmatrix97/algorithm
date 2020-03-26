@@ -1,9 +1,9 @@
-// Each function returns the index of the target and whether it succeeded or not by (int, bool).
+// LowerBound and UpperBound returns len(a) if it failed.
+// Other function returns the index of the target and whether it succeeded or not by (int, bool).
 package search
 
-// find target.
-func BinarySearch(a []int, target int) (int, bool) {
-	left, right := 0, len(a)-1
+// BinarySearch returns the index of target in [left, right].
+func BinarySearch(a []int, left, right, target int) (int, bool) {
 	for left <= right {
 		mid := left + (right-left)>>1
 		if target > a[mid] {
@@ -17,8 +17,34 @@ func BinarySearch(a []int, target int) (int, bool) {
 	return -1, false
 }
 
-// find the last element less than or equal to the target.
-func FindLastLE(a []int, target int) (int, bool) {
+// LowerBound returns the index of the first element greater than or equal to target in [left, right).
+func LowerBound(a []int, left, right, target int) int {
+	for left < right {
+		mid := left + (right-left)>>1
+		if a[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid
+		}
+	}
+	return left
+}
+
+// LowerBound returns the index of the first element greater than target in [left, right).
+func UpperBound(a []int, left, right, target int) int {
+	for left < right {
+		mid := left + (right-left)>>1
+		if a[mid] <= target {
+			left = mid + 1
+		} else {
+			right = mid
+		}
+	}
+	return left
+}
+
+// LastLE returns the index of the last element less than or equal to the target.
+func LastLE(a []int, target int) (int, bool) {
 	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
@@ -34,8 +60,8 @@ func FindLastLE(a []int, target int) (int, bool) {
 	return left - 1, true
 }
 
-// find the first element greater than or equal to the target.
-func FindFirstGE(a []int, target int) (int, bool) {
+// FirstGE returns the index of the first element greater than or equal to the target.
+func FirstGE(a []int, target int) (int, bool) {
 	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
@@ -51,8 +77,8 @@ func FindFirstGE(a []int, target int) (int, bool) {
 	return right + 1, true
 }
 
-// find the last element less than the target.
-func FindLastLT(a []int, target int) (int, bool) {
+// LastLT returns the index of the last element less than the target.
+func LastLT(a []int, target int) (int, bool) {
 	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)/2
@@ -68,8 +94,8 @@ func FindLastLT(a []int, target int) (int, bool) {
 	return left - 1, true
 }
 
-// find the first element greater than the target.
-func FindFirstGT(a []int, target int) (int, bool) {
+// FirstGT reutrns the index of the first element greater than the target.
+func FirstGT(a []int, target int) (int, bool) {
 	left, right := 0, len(a)-1
 	for left <= right {
 		mid := left + (right-left)>>1
