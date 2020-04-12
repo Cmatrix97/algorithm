@@ -1,9 +1,24 @@
 package josephus
 
-/*
-T(n) = O(mn)
-Solve with queue.
-*/
+import "container/ring"
+
+// Solve with container/ring.
+func JosephusRing(n int, m int) int {
+	r := ring.New(n)
+	for i := 1; i <= n; i++ {
+		r.Value = i
+		r = r.Next()
+	}
+	for r.Len() > 1 {
+		r = r.Move(m - 2)
+		r.Unlink(1)
+		r = r.Next()
+	}
+	return r.Value.(int)
+}
+
+// T(n) = O(mn)
+// Solve with queue.
 func JosephusQueue(n, m int) int {
 	queue := make([]int, n)
 	for i := 1; i <= n; i++ {
@@ -20,11 +35,9 @@ func JosephusQueue(n, m int) int {
 	return queue[0]
 }
 
-/*
-T(n) = O(n)
-f(n,m) = 0, n=1
-f(n,m) = [f(n-1,m)+m]%n, n>1
-*/
+// T(n) = O(n)
+// f(n,m) = 0, n=1
+// f(n,m) = [f(n-1,m)+m]%n, n>1
 func JosephusForm1(n, m int) int {
 	var last int
 	for i := 2; i <= n; i++ {
@@ -33,23 +46,21 @@ func JosephusForm1(n, m int) int {
 	return last + 1
 }
 
-/*
-T(n) = O(logn)
-current: N = n + k(m-1) + d
-previous: k + N - n
-K = (N - n - 1) / (m - 1)
-The solution is as follows:
-N = mn
-while N > n:
-	N = k + N - n
-return N
+// T(n) = O(logn)
+// current: N = n + k(m-1) + d
+// previous: k + N - n
+// K = (N - n - 1) / (m - 1)
+// The solution is as follows:
+// N = mn
+// while N > n:
+// 	N = k + N - n
+// return N
 
-Let D = mn + 1 - N = math.Ceil((m*D/(m-1)))
-D = 1
-while D <= (m-1)*n:
-	D = math.Ceil((m*D/(m-1)))
-return mn - D + 1
-*/
+// Let D = mn + 1 - N = math.Ceil((m*D/(m-1)))
+// D = 1
+// while D <= (m-1)*n:
+// 	D = math.Ceil((m*D/(m-1)))
+// return mn - D + 1
 func JosephusForm2(n, m int) int {
 	ceil := func(x, y int) int {
 		if x%y != 0 {

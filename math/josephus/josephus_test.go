@@ -9,6 +9,12 @@ var (
 	M = 333
 )
 
+func BenchmarkRing(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		JosephusRing(N, M)
+	}
+}
+
 func BenchmarkQueue(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		JosephusQueue(N, M)
