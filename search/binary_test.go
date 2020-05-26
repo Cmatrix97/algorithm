@@ -85,6 +85,27 @@ func TestBinarySearch(t *testing.T) {
 	}
 }
 
+func TestBinSearch(t *testing.T) {
+	for i := 0; i < testTimes; i++ {
+		arr, target := randomArray(rng)
+		wantIdxs, wantSuc := linearSearch(arr, target)
+		idx, suc := BinSearch(arr, 0, len(arr), target)
+		flag := false
+		for _, v := range wantIdxs {
+			if v == idx {
+				flag = true
+				break
+			}
+		}
+		if suc != wantSuc || !flag {
+			if len(wantIdxs) == 0 && idx == -1 {
+				continue
+			}
+			t.Errorf("BinSearch(%v, %d): got(%d, %t), want(%v, %t)", arr, target, idx, suc, wantIdxs, wantSuc)
+		}
+	}
+}
+
 func TestLowerBound(t *testing.T) {
 	for i := 0; i < testTimes; i++ {
 		arr, target := randomArray(rng)

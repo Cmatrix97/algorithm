@@ -17,6 +17,21 @@ func BinarySearch(a []int, left, right, target int) (int, bool) {
 	return -1, false
 }
 
+// BinSearch returns the index of target in [left, right).
+func BinSearch(a []int, left, right, target int) (int, bool) {
+	for left < right {
+		mid := left + (right-left)>>1
+		if a[mid] < target {
+			left = mid + 1
+		} else if a[mid] > target {
+			right = mid
+		} else {
+			return mid, true
+		}
+	}
+	return -1, false
+}
+
 // LowerBound returns the index of the first element greater than or equal to target in [left, right).
 func LowerBound(a []int, left, right, target int) int {
 	for left < right {
